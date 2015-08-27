@@ -26,7 +26,6 @@ For more information, refer to the following sources:
 ###Folder structure
 
 * **Cleaning**. Cleaning scripts for the features table.
-* **Data-exploration**. Contains notebooks used for the initial data exploration.
 * **db_scripts**. Contains the scripts used for table creating,  data uploading, among others.
 * **Diagrams**. Includes diagrams used for this README as well as some other used throughout the project.
 * **Feature-engineering**. Scripts used for producing the municipality features.
