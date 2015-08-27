@@ -17,8 +17,8 @@ class FlaskApp(Flask):
     def __init__(self, *args, **kwargs):
         super(FlaskApp, self).__init__(*args, **kwargs)
         print "Loading Model..."
-        self.model = joblib.load('/mnt/scratch/final_model/final_model.pkl') 
-        self.features, self.q_breaks = pickle.load(open("/mnt/scratch/final_model/final_model_feats_n_qb.pkl", 'rb'))
+        self.model = joblib.load('/mnt/data/infonavit/final_model/final_model.pkl') 
+        self.features, self.q_breaks = pickle.load(open("/mnt/data/infonavit/final_model/final_model_feats_n_qb.pkl", 'rb'))
         print "Done!"
 
 app = FlaskApp(__name__)
@@ -86,7 +86,7 @@ def index():
 
         data = dict(data)
 
-	if age:
+        if age:
             data['personal_age'] = age
         if risk_index:
             data['personal_risk_index'] = risk_index
@@ -104,8 +104,8 @@ def index():
                     if data[feature] < max_val:
                         data[feature + '_quantile'] = idx
                         break
-		    if idx == len(app.q_breaks[feature]) - 1:
-			data[feature + '_quantile'] = idx
+                    if idx == len(app.q_breaks[feature]) - 1:
+                        data[feature + '_quantile'] = idx
                 except:
                     print "Couldnt make quantile feature for {}".format(feature)
                     break
@@ -116,7 +116,7 @@ def index():
                 if data[feature] == None:
                     observation.append(0.0)
                 else:
-		    print "feature: {} value {}".format(feature, data[feature])
+                    print "feature: {} value {}".format(feature, data[feature])
                     observation.append(data[feature])
             except:
                 print "couldnt add feature {}".format(feature)
@@ -128,11 +128,13 @@ def index():
         pred = str(round(app.model.predict_proba(observation)[0][1] * 100, 1)) + "%"
         #Delete this...
         #pred = str(round(random.random()*100, 1))+"%"
-	print "prediction: {}".format(pred)        
+        print "prediction: {}".format(pred)        
         #Compute top_factors
-        top_factors = ['Long distance to schools',
-                       'Lack of healthcare services',
-                       'High crime rate']
+        top_factors = [('Colonia Abandonment % 2014', data["colonia_abd_percent"]),
+                       ('Buisness Per Capita', data["no_busemp__0_5k"]),
+                       ('# Schools 0 to 5 Km', data["no_businesses_6111_0_5k"]),
+                       ('# Hospitals 0 to 5 Km', data["no_businesses_622_0_5k"]),
+                       ('# Restaurants 0 to 5 Km', data["no_businesses_722_0_5k"])]
 
         #From col_name, mun_name, state_name, col_id string
         #remove col_id
@@ -181,4 +183,4 @@ def teardown_request(exception):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0', port=9999)

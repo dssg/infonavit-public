@@ -31,8 +31,8 @@ $("#prediction_form").submit(function(e)
             
             var table_body_html = '';
             $.each(data.top_factors, function (i, item) {
-                table_body_html += '<tr><th scope="row">' + i +
-                         '</td><td>' + item +
+                table_body_html += '<tr><th scope="row">' + item[0] +
+                         '</td><td>' + item[1] +
                          '</td></tr>';
             });
 
