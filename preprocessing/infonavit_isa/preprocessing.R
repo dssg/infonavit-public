@@ -1,0 +1,1 @@
+df <- read.csv("ISA.csv", na.strings="#NULL!")

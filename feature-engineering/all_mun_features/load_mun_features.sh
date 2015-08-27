@@ -1,0 +1,22 @@
+#!/bin/bash -x
+# The username is required as parameter
+
+USERNAME=$1
+
+RUN_ON_MYDB="psql -X -U $USERNAME -h dssgsummer2014postgres.c5faqozfo86k.us-west-2.rds.amazonaws.com -d infonavit"
+
+# load the initial mun_features data
+$RUN_ON_MYDB <<SQL
+drop table if exists mun_features;
+SQL
+
+TABLE=$(cat create_mun_features.sql)
+$RUN_ON_MYDB -c "$TABLE"
+
+
+$RUN_ON_MYDB <<SQL
+\copy mun_features (cve,year,nom_mun,region,geo_zone,average_degree_of_schooling_of_the_population_15_years_and_over_estimation,households_estimation,percentage_of_population_15_to_29_years_estimation,percentage_of_population_60_or_more_years_estimation,total_population_estimation,total_population_men_estimation,total_population_women_estimation,homicide_rate,male_homicide_rate,female_homicide_rate,effectpeopledead,effectpeoplemissing,effectpeopleinjured,effectpeopleharmed,effectpeopleaffected,effectpeopleevacuated,effectpeoplerelocated,effecthousesdestroyed,effecthousesaffected,effectlossesvalueusd,motor_vehicles_rate,motorcycles_rate,passenger_buses_rate,trucks_and_vans_rate,vehicles_rate,births_rate,births_men_rate,births_sex_unspecified_rate,births_women_rate,deaths_of_infants_under_one_year_rate,deaths_of_infants_under_one_year_men_rate,deaths_of_infants_under_one_year_old_sex_not_specified_rate,deaths_of_infants_under_one_year_women_rate,divorces_rate,general_deaths_rate,general_deaths_men_rate,general_deaths_unspecified_sex_rate,general_deaths_women_rate,marriages_rate,gross_expenditure_per_capita) FROM mun_features.csv WITH CSV HEADER DELIMITER ',';
+
+SQL
+
+

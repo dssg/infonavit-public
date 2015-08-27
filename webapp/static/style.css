@@ -1,0 +1,11 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 10px 10px;
+  text-align: center;
+}
+
+#map {
+   height:300px;
+}
