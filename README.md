@@ -59,7 +59,7 @@ To run the model locally, follow these instructions:
 The webapp will start running by default on `http://127.0.0.1:5000/`
 
 ## Data
-
+<html>
 <table>
     <th>Name</th>
     <th>Source</th>
@@ -127,6 +127,7 @@ The webapp will start running by default on `http://127.0.0.1:5000/`
 
 
 </table>
+</html>
 **Note**: INFONAVIT data details omitted for privacy reasons. <br>
 \*Diego Valle-Jones provides a clean version of INEGI data <br>
 \**CVE is an identifier for each municipality in Mexico.
