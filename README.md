@@ -1,4 +1,4 @@
-#Reducing home abandonment in Mexico (DSSG 2015)
+# Reducing home abandonment in Mexico (DSSG 2015)
 
 Home abandonment is a major cause of negative financial and economic outcomes both for individuals and lending institutions in Mexico. **To date, home abandonment has affected more than 200,000 homes financed by Infonavit** (the largest mortgage provider in Mexico). Such institution was created by the government for the purpose of assisting lower-income families that cannot obtain financing from a private institution (such as banks). To advance its mission the organization wants to understand the relationship between policy, social influences, and dwelling abandonment. 
 
@@ -9,7 +9,7 @@ For more information, refer to the following sources:
 * [Improving Long-Term Financial Soundness by Identifying Causes of Home Abandonment in Mexico (DSSG Blog)](http://dssg.uchicago.edu/2000/03/02/org-infonavit.html)
 * [Infonavit Project: Reducing Home Abandonment](http://dssg.io/2015/08/13/infonavit-abandonment.html)
 
-##Tools
+## Tools
 
 * Database
     * PostgreSQL
@@ -21,9 +21,9 @@ For more information, refer to the following sources:
     * [Jupyter](https://jupyter.org/)
     * [Pandas](http://pandas.pydata.org/)
     
-##How to use this repository
+## How to use this repository
 
-###Folder structure
+### Folder structure
 
 * **Cleaning**. Cleaning scripts for the features table.
 * **db_scripts**. Contains the scripts used for table creating,  data uploading, among others.
@@ -37,7 +37,7 @@ For more information, refer to the following sources:
 * **Useful_scripts**. R scripts used for computing municipality features.
 * **Webapp**. Source code for the prototype.
 
-###Running the prototype
+### Running the prototype
 
 Our final prototype is a web that predicts home abandonment based on personal, loan and location characteristics. The prototype was built using the following tools:
 
@@ -58,7 +58,7 @@ To run the model locally, follow these instructions:
 
 The webapp will start running by default on `http://127.0.0.1:5000/`
 
-##Data
+## Data
 
 <table>
     <th>Name</th>
@@ -131,16 +131,16 @@ The webapp will start running by default on `http://127.0.0.1:5000/`
 \*Diego Valle-Jones provides a clean version of INEGI data <br>
 \**CVE is an identifier for each municipality in Mexico.
 
-##Data pipeline
+## Data pipeline
 
 <img src="diagrams/data_pipeline.png"></img>
 
-##Data enviroment
+## Data enviroment
 
 <img src="diagrams/data_enviroment.png"></img>
 
 *Computer By Olivier Guin, FR*
 
-##The team
+## The team
 
 <img src="diagrams/team.png"></img>
